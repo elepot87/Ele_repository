@@ -1,0 +1,189 @@
+h1,
+h2 {
+  color: #373a40;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: inline;
+}
+
+p.weather-info,
+.day-info {
+  color: #686d76;
+  font-size: 20px;
+  line-height: 15px;
+  margin-top: 20px;
+}
+p.precipitation {
+  color: #686d76;
+  font-size: 16px;
+  margin-top: 40px;
+  margin-bottom: 2px;
+}
+p.wind {
+  color: #686d76;
+  font-size: 16px;
+}
+.type-city {
+  color: #373a40;
+  font-style: italic;
+  padding: 5px;
+}
+.fa-search {
+  margin: 0 10px 0 15px;
+  font-size: 25px;
+  color: #19d3da;
+}
+.fa-map-marker-alt {
+  margin: 0 10px 0 10px;
+  font-size: 25px;
+  color: #19d3da;
+}
+.fa-map-marker-alt:hover {
+  cursor: pointer;
+}
+.card {
+  max-width: 960px;
+  display: block;
+  margin: 50px auto;
+  border: 1px solid #d6dfe1;
+}
+
+.card-body {
+  padding-top: 30px;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #373a40;
+  margin-left: 10px;
+}
+
+.rounded {
+  border-radius: 20px !important;
+}
+
+.immagine-lato {
+  max-height: 300px;
+  margin: 0 0 0 145px;
+  position: fixed;
+}
+
+.fa-tint {
+  font-size: 25px;
+  color: #19d3da;
+  margin: 0 8px 15px 0;
+}
+.fa-wind {
+  font-size: 25px;
+  color: #19d3da;
+  margin: 0 10px 15px 0;
+}
+
+.forecast {
+  text-align: center;
+  color: #373a40;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.gradi {
+  color: #373a40;
+  font-weight: 600;
+}
+
+.col-sm {
+  border-right: 0.8px solid #eeeeee;
+}
+
+.icone-meteo {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: -20px;
+}
+
+.tip {
+  color: #19d3da;
+  text-align: center;
+  font-size: 40px;
+  font-family: "Yusei Magic", sans-serif;
+}
+.card-mobile {
+  display: none;
+}
+#button-search {
+  background-color: #19d3da;
+  border: none;
+  margin: 0 10px 0 15px;
+}
+
+.celsius {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #373a40;
+}
+.fahrenheit {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #373a40;
+}
+a:hover {
+  color: #19d3da;
+}
+
+.separator {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #373a40;
+}
+@media screen and (max-width: 600px) {
+  .immagine-lato {
+    display: none;
+  }
+  .card-body {
+    padding-top: 30px;
+    font-family: "Noto Sans TC", sans-serif;
+    color: #373a40;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  .tip {
+    display: none;
+  }
+
+  .col-sm {
+    margin-top: 20px;
+  }
+  .card-mobile {
+    display: block;
+    margin: 0 auto;
+    border: none;
+  }
+
+  .card-img-top {
+    max-height: 50%;
+    max-width: 50%;
+  }
+
+  .testo-mobile {
+    text-align: center;
+    color: #19d3da;
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 20px;
+  }
+
+  .info-attuali {
+    text-align: center;
+  }
+}
