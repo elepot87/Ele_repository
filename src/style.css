@@ -114,7 +114,7 @@ p.wind {
 .tip {
   color: #19d3da;
   text-align: center;
-  font-size: 36px;
+  font-size: 30px;
   font-family: "Yusei Magic", sans-serif;
 }
 .card-mobile {
@@ -132,14 +132,30 @@ p.wind {
   margin-bottom: 30px;
   text-decoration: none;
   color: #373a40;
+  position: relative;
+  top: -10px;
 }
+
 .fahrenheit {
   font-size: 16px;
   margin-top: 20px;
   margin-bottom: 30px;
   text-decoration: none;
   color: #373a40;
+  position: relative;
+  top: -10px;
 }
+
+.celsius-fahrenheit {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #373a40;
+  position: relative;
+  top: -10px;
+}
+
 a:hover {
   color: #19d3da;
 }
