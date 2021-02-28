@@ -45,10 +45,11 @@ let dayHourInfo = document.querySelector(".day-info");
 dayHourInfo.innerHTML = `${date} ${currentMonth} ${currentYear} - ${currentDay} ${hours}:${minutes}`;
 
 function displayTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
   console.log(response.data);
   let h2 = document.querySelector("#temp");
-  h2.innerHTML = `${temperature} °C`;
+  h2.innerHTML = `${temperature}`;
   let weatherInfo = document.querySelector(".weather-info");
   weatherInfo.innerHTML = response.data.weather[0].main;
   let humidity = document.querySelector(".humidity");
@@ -127,7 +128,7 @@ function displayTemp(response) {
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "The sun is shine!";
   } else if (response.data.weather[0].description == `few clouds`) {
-    iconElementMobile.setAttribute("src", `images/sole_nuvola_mobile.png`);
+    iconElementMobile.setAttribute("src", `images/sole__nuvola_mobile.png`);
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "Not bad, but it could be better!";
   } else if (
@@ -182,7 +183,6 @@ function displayTemp(response) {
 }
 
 function showCurrentCity(event) {
-  event.preventDefault();
   let currentCity = document.querySelector("#city");
   let h1 = document.querySelector("h1");
   if (currentCity.value != "") {
@@ -214,21 +214,23 @@ function getCurrentLocation() {
 let currentLocationButton = document.querySelector(".fas.fa-map-marker-alt");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-/*function showFahrenheitTemp(event) {
+let celsiusTemp = null;
+
+function showFahrenheitTemp(event) {
   event.preventDefault();
-  let fahrenheitTemp = "36";
+  let fahrenheitTemp = Math.round(celsiusTemp * 9) / 5 + 32;
   let h2 = document.querySelector("#temp");
-  h2.innerHTML = `${fahrenheitTemp}`;
+  h2.innerHTML = Math.round(`${fahrenheitTemp}`);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let h2 = document.querySelector("#temp");
+  h2.innerHTML = Math.round(celsiusTemp);
 }
 
 let fahrenheit = document.querySelector(".fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheitTemp);
 
-function showCelsiusTemp(event) {
-  let celsiusTemp = "2";
-  let h2 = document.querySelector("#temp");
-  h2.innerHTML = `${celsiusTemp}`;
-}
-
-let celsius = document.querySelector(".celsius");
-celsius.addEventListener("click", showCelsiusTemp); */
+let celsius = document.querySelector("#celsius-link");
+celsius.addEventListener("click", showCelsiusTemp);
