@@ -42,6 +42,10 @@ p.wind {
   font-size: 25px;
   color: #19d3da;
 }
+.fa-search:hover {
+  cursor: pointer;
+}
+
 .fa-map-marker-alt {
   margin: 0 10px 0 10px;
   font-size: 25px;
@@ -116,11 +120,11 @@ p.wind {
 .card-mobile {
   display: none;
 }
-#button-search {
+/*#button-search {
   background-color: #19d3da;
   border: none;
   margin: 0 10px 0 15px;
-}
+}*/
 
 .celsius {
   font-size: 16px;
@@ -146,14 +150,6 @@ a:hover {
   margin-bottom: 30px;
   color: #373a40;
 }
-
-p.info_coding {
-  margin-bottom: 5px;
-  font-size: 10px;
-  margin-top: 20px;
-  font-style: italic;
-}
-
 @media screen and (max-width: 600px) {
   .immagine-lato {
     display: none;
@@ -194,4 +190,9 @@ p.info_coding {
   .info-attuali {
     text-align: center;
   }
+}
+
+#coded-by {
+  font-size: 12px;
+  color: #686d76;
 }

@@ -58,10 +58,19 @@ function displayTemp(response) {
   let currentPosition = document.querySelector("h1");
   currentPosition.innerHTML = response.data.name;
   let iconElement = document.querySelector("#main-icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  if (response.data.weather[0].main == `Clear`) {
+    iconElement.setAttribute("src", `images/sole_half.png`);
+  }
+  let iconElementMobile = document.querySelector("#main-icon-mobile");
+  if (response.data.weather[0].main == `Clear`) {
+    iconElementMobile.setAttribute("src", `images/sole_mobile.png`);
+
+    let suggestionElement = document.querySelector("#suggestion");
+    suggestionElement.innerHTML = "The sun is shine!";
+
+    let suggestionElementMobile = document.querySelector("#suggestion-mobile");
+    suggestionElementMobile.innerHTML = "The sun is shine!";
+  }
 }
 
 function showCurrentCity(event) {
@@ -80,7 +89,7 @@ function showCurrentCity(event) {
   axios.get(apiUrl).then(displayTemp);
 }
 
-let currentCity = document.querySelector("#button-search");
+let currentCity = document.querySelector(".fas.fa-search");
 currentCity.addEventListener("click", showCurrentCity);
 
 function showPosition(position) {
