@@ -57,6 +57,11 @@ function displayTemp(response) {
   speed.innerHTML = response.data.wind.speed;
   let currentPosition = document.querySelector("h1");
   currentPosition.innerHTML = response.data.name;
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function showCurrentCity(event) {
