@@ -127,7 +127,7 @@ function displayTemp(response) {
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "The sun is shine!";
   } else if (response.data.weather[0].description == `few clouds`) {
-    iconElementMobile.setAttribute("src", `images/sole__nuvola_mobile.png`);
+    iconElementMobile.setAttribute("src", `images/sole_nuvola_mobile.png`);
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "Not bad, but it could be better!";
   } else if (
