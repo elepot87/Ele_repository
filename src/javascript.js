@@ -234,3 +234,16 @@ fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", showCelsiusTemp);
+
+function showCityOnLoad(event) {
+  let cityOnLoad = document.querySelector("#city");
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `Turin`;
+
+  let key = "5bace7f1eee03471e89a577a0405da30";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Province of Turin&appid=${key}&units=${units}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+
+showCityOnLoad();
