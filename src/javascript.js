@@ -128,7 +128,7 @@ function displayTemp(response) {
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "The sun is shine!";
   } else if (response.data.weather[0].description == `few clouds`) {
-    iconElementMobile.setAttribute("src", `images/sole__nuvola_mobile.png`);
+    iconElementMobile.setAttribute("src", `images/sole_nuvola_mobile.png`);
     let suggestionElementMobile = document.querySelector("#suggestion-mobile");
     suggestionElementMobile.innerHTML = "Not bad, but it could be better!";
   } else if (
@@ -182,6 +182,70 @@ function displayTemp(response) {
   }
 }
 
+/*function formatForecastDate(timestamp) {
+  let date = new Date(timestamp);
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[date.getMonth()];
+  let monthDay = date.getDate();
+  return `${monthDay} ${month}`;
+}
+*/
+function formatHours(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  console.log(response);
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += ` <div class="col-sm">
+                 <p> 
+                 <strong>${formatHours(forecast.dt * 1000)}</strong> 
+                 <br />
+                  <img src="http://openweathermap.org/img/wn/${
+                    forecast.weather[0].icon
+                  }@2x.png" alt="" class="icone-meteo"> <br />
+                   <span class="gradi"> ${Math.round(
+                     forecast.main.temp
+                   )}°C</span>  
+                 </p> 
+                </div>
+                `;
+    //Use custom icon for forecast
+    let iconForecast = document.querySelector("icone-meteo");
+    if (response.data.list[index].weather.description == `clear sky`) {
+      iconForecast.setAttribute("src", `images/sole_mobile.png`);
+    } else if (response.data.list[index].weather.description == `few clouds`) {
+      iconForecast.setAttribute("src", `images/sole_nuvola_mobile.png`);
+    }
+  }
+}
 function showCurrentCity(event) {
   let currentCity = document.querySelector("#city");
   let h1 = document.querySelector("h1");
@@ -195,6 +259,9 @@ function showCurrentCity(event) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&appid=${key}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity.value}&appid=${key}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let currentCity = document.querySelector(".fas.fa-search");
@@ -207,6 +274,9 @@ function showPosition(position) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(displayTemp);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -244,6 +314,9 @@ function showCityOnLoad(event) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Province of Turin&appid=${key}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Province of Turin&appid=${key}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 showCityOnLoad();
