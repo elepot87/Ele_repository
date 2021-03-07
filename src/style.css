@@ -102,7 +102,9 @@ p.wind {
 }
 
 .col-sm {
-  border-right: 0.8px solid #eeeeee;
+  border: 0.8px solid #eeeeee;
+  border-top: none;
+  border-bottom: none;
 }
 
 .icone-meteo {
