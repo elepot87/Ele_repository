@@ -221,31 +221,73 @@ function displayForecast(response) {
   forecastElement.innerHTML = null;
   let forecast = null;
   console.log(response);
-
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += ` <div class="col-sm">
                  <p> 
                  <strong>${formatHours(forecast.dt * 1000)}</strong> 
                  <br />
-                  <img src="http://openweathermap.org/img/wn/${
-                    forecast.weather[0].icon
-                  }@2x.png" alt="" class="icone-meteo"> <br />
+                  <img src="${getIcon(
+                    forecast.weather[0].main,
+                    forecast.weather[0].description
+                  )}" alt="" class="icone-meteo"> <br />
                    <span class="gradi"> ${Math.round(
                      forecast.main.temp
                    )}°C</span>  
                  </p> 
                 </div>
                 `;
-    //Use custom icon for forecast
-    let iconForecast = document.querySelector("icone-meteo");
-    if (response.data.list[index].weather.description == `clear sky`) {
-      iconForecast.setAttribute("src", `images/sole_mobile.png`);
-    } else if (response.data.list[index].weather.description == `few clouds`) {
-      iconForecast.setAttribute("src", `images/sole_nuvola_mobile.png`);
-    }
   }
 }
+
+function getIcon(main, description) {
+  let icon = "";
+  if (description == `clear sky`) {
+    icon = `images/sole.png`;
+  } else if (description == `few clouds`) {
+    icon = `images/sole_nuvola.png`;
+  } else if (
+    description == `light snow` ||
+    description == `Snow` ||
+    description == `Heavy snow` ||
+    description == `Sleet` ||
+    description == `Light shower sleet` ||
+    description == `Shower sleet` ||
+    description == `Light rain and snow` ||
+    description == `Rain and snow` ||
+    description == `Light shower snow` ||
+    description == `Shower snow` ||
+    description == `Heavy shower snow`
+  ) {
+    icon = `images/neve.png`;
+  } else if (main == `Rain`) {
+    icon = `images/pioggia.png`;
+  } else if (main == `Drizzle`) {
+    icon = `images/pioviggine.png`;
+  } else if (main == `Thunderstorm`) {
+    icon = `images/temporale.png`;
+  } else if (
+    main == `Mist` ||
+    main == `Smoke` ||
+    main == `Haze` ||
+    main == `Dust` ||
+    main == `Fog` ||
+    main == `Squall` ||
+    main == `Tornado`
+  ) {
+    icon = `images/nebbia.png`;
+  } else {
+    if (
+      description == `overcast clouds` ||
+      description == `broken clouds` ||
+      description == `scattered clouds`
+    ) {
+      icon = `images/nuvola.png`;
+    }
+  }
+  return icon;
+}
+
 function showCurrentCity(event) {
   let currentCity = document.querySelector("#city");
   let h1 = document.querySelector("h1");
