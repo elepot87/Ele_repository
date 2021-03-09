@@ -221,7 +221,23 @@ a:hover {
   margin-left: 175px;
 }
 
+/* Tablet in modalità verticale */
 @media all and (min-width: 481px) and (max-width: 736px) {
+  #coded-by {
+    margin-left: 100px;
+  }
+
+  .fa-search {
+    margin-top: 10px;
+  }
+
+  .fa-map-marker-alt {
+    margin-top: 10px;
+  }
+}
+
+/* Smartphone o piccoli Tablet */
+@media all and (max-width: 480px) {
   #coded-by {
     margin-left: 100px;
   }
