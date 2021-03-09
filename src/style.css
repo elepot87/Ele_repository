@@ -239,7 +239,7 @@ a:hover {
 /* Smartphone o piccoli Tablet */
 @media all and (max-width: 480px) {
   #coded-by {
-    margin-left: 100px;
+    margin-left: 80px;
   }
 
   .fa-search {
