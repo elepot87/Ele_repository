@@ -225,4 +225,12 @@ a:hover {
   #coded-by {
     margin-left: 100px;
   }
+
+  .fa-search {
+    margin-top: 10px;
+  }
+
+  .fa-map-marker-alt {
+    margin-top: 10px;
+  }
 }
